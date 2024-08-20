@@ -30,8 +30,29 @@ def vector_embedding():
         print("hEllo")
         st.session_state.vectors=FAISS.from_documents(st.session_state.final_documents,st.session_state.embeddings) #vector OpenAI embeddings
 
+# Inject custom CSS
+st.markdown("""
+    <style>
+    .custom-title {
+        border: 2px solid pink;
+        background-color: blackfade;
+        color: white;
+        padding: 30px;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 20px;
+    }
+    .custom-title:hover {
+        transform: scale(1.1);
+        color: red;
+        border-color: red;
+        background-color: white;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
-st.title("Nvidia NIM Demo")
+st.markdown('<h1 class="custom-title">Nvidia NIM Demo</h1>', unsafe_allow_html=True)
+
 llm = ChatNVIDIA(model="meta/llama3-70b-instruct")
 
 
